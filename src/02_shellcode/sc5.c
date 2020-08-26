@@ -1,4 +1,4 @@
-// gcc  -fno-stack-protector -z execstack -no-pie sc3.c -o sc3 -lseccomp
+// gcc  -fno-stack-protector -z execstack -no-pie sc5.c -o sc5 -lseccomp
 #include <stdio.h>
 #include <sys/mman.h>
 #include <sys/types.h>
@@ -23,15 +23,6 @@ int init_seccomp() {
 	ctx = seccomp_init(SCMP_ACT_KILL);
 	if (ctx == NULL)
 		goto out;
-	rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(open), 0);
-	if (rc < 0)
-		goto out;
-	rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(read), 0);
-	if (rc < 0)
-		goto out;
-	rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(write), 0);
-	if (rc < 0)
-		goto out;
 	rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(close), 0);
 	if (rc < 0)
 		goto out;
@@ -48,15 +39,22 @@ out:
 }
 
 
-char bss_buf[0x100];
+
+char bss_buf[0x20];
+char flag[0x20];
 
 int main(int argc, char** argv){
-	if (init_seccomp() != 0) die("init_seccomp failed");
-	char buf[0x70];
-    write(1, "input ur name plz\n", 18);
-	int n = read(0, buf, 0x100);
-    memcpy(bss_buf, buf, 0x100);
-    write(1, "bye bye", 7);
-    write(1, bss_buf, n);
+	char buf[0x400];
+	int fd;
+	if ((fd = open("./flag", O_RDONLY)) < 0) die("open flag error");
+	if (read(fd, flag, 0x40) <= 0) die("read flag error");
+	write(1, "input your shellcode\n", 21);
+	int n = read(0, bss_buf, 0x20);
+
+	init_seccomp();
+
+    void (* p)(void) = &bss_buf;
+    p();
+    
 	return 0;
 }

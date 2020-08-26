@@ -1,4 +1,4 @@
-// gcc  -fno-stack-protector -z execstack -no-pie sc2.c -o sc2
+// gcc  -fno-stack-protector -z execstack -no-pie sc4.c -o sc4
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>

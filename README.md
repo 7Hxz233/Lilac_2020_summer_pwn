@@ -28,4 +28,4 @@ Lilac 2020 暑期pwn培训课件以及相关文件
 2. sc2.c: ret2shellcode
 3. sc3.c: orwshellcode
 4. sc4.c: printable shellcode
-5. sc5.c: (todo) 侧信道 leak flag
+5. sc5.c: 侧信道 leak flag

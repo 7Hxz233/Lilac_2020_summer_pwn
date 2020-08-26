@@ -2,8 +2,8 @@ from pwn import *
 
 context.arch = 'amd64'
 
-# io = process(['./sc3'])
-io = gdb.debug(['./sc3'], "b *0x400a53")
+io = process(['./sc3'])
+# io = gdb.debug(['./sc3'], "b *0x400a53")
 
 bss_buf = 0x6010a0
 
