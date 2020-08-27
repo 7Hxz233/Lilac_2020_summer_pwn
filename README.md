@@ -10,7 +10,7 @@ Lilac 2020 暑期pwn培训课件以及相关文件
 
 # 源码对应知识点
 
-## 01stack 文件夹:
+## 01_stack 文件夹:
 
 栈溢出相关练习题
 
@@ -23,8 +23,8 @@ Lilac 2020 暑期pwn培训课件以及相关文件
 
 ## 02_shellcode 文件夹:
 
-1. sc1.c:  使用syscal get shell
-1. sc1_seccomp.c:  加了seccomp规则之后无法使用syscal get shell
+1. sc1.c:  使用syscall get shell
+1. sc1_seccomp.c:  加了seccomp规则之后无法使用syscall get shell
 2. sc2.c: ret2shellcode
 3. sc3.c: orwshellcode
 4. sc4.c: printable shellcode
