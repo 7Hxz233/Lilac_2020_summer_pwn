@@ -1,4 +1,4 @@
-// gcc  -fno-stack-protector -z execstack -no-pie sc2.c -o sc2
+// gcc -O0 -fno-stack-protector -z execstack -no-pie sc2.c -o sc2
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -7,7 +7,8 @@
 char bss_buf[0x100];
 
 int main(int argc, char** argv){
-	char buf[0x70];
+	char buf[0x70] = {0};
+    buf[0x6f] = 'a';
     write(1, "input ur name plz\n", 18);
 	int n = read(0, buf, 0x100);
     memcpy(bss_buf, buf, 0x100);

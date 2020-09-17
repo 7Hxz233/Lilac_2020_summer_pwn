@@ -1,4 +1,4 @@
-// gcc  -fno-stack-protector -z execstack -no-pie sc3.c -o sc3 -lseccomp
+// gcc -O0 -fno-stack-protector -z execstack -no-pie sc3.c -o sc3 -lseccomp
 #include <stdio.h>
 #include <sys/mman.h>
 #include <sys/types.h>
