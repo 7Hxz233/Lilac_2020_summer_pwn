@@ -5,7 +5,7 @@
   - [2.1. stack 文件夹:](#21-stack-文件夹)
   - [2.2. shellcode 文件夹:](#22-shellcode-文件夹)
   - [2.3. format_string 文件夹:](#23-format_string-文件夹)
-  - [2.4. 动态链接(plt表和got表)](#24-动态链接plt表和got表)
+  - [2.4. dynamic_link 文件夹:](#24-dynamic_link-文件夹)
   - [2.5. 常见漏洞类型](#25-常见漏洞类型)
   - [2.6. 堆入门](#26-堆入门)
   - [2.7. iofile](#27-iofile)
@@ -63,7 +63,9 @@ shellcode 相关练习题
 3. fs3.c: 利用格式化字符漏洞修改栈上的变量
 4. fs4.c: 利用格式化字符漏洞修改返回地址指向后门函数
 
-## 2.4. 动态链接(plt表和got表)
+## 2.4. dynamic_link 文件夹:
+
+动态链接(plt表和got表)
 
 1. dl1.c: 调用两个libc函数, 用以展示动态链接的过程
 2. dl2.c: 栈溢出, 泄露got表中的libc地址, 然后ret2libc
@@ -75,15 +77,28 @@ todo
 
 ## 2.6. 堆入门
 
-todo
+1. heap1.c: 熟悉相关函数以及结构体
+2. heap2.c: 利用use-after-free漏洞泄露地址
+3. heap3.c: double free + fastbin attack
+4. heap4.c: uaf leak + fastbin attack get shell
+5. heap5.c: unlink
+6. heap6.c: unsorted bin attack
 
 ## 2.7. iofile
 
-todo
+TODO
+
+1. leak libc
+2. 
 
 ## 2.8. 堆进阶
 
-todo
+TODO
+
+1. 堆溢出
+2. off-by-one
+3. __malloc_hook, __realloc_hook, __free_hook, one_gadget
+4. tcache attack
 
 # 3. 环境配置
 
